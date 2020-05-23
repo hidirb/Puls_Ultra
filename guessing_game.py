@@ -39,20 +39,27 @@ num = 10
 
 secret = random.randint(1,num)
 
-guess =int
+guess = None 
 count = 1
+
 
     
 
-while num != secret:
-    guess = input("Pick a number between 1 and" + str(num) + ": ")
-    if guess.isdigit():
-        guess = int(guess)
+while guess != secret:
+    try:
+        guess = int(input("Pick a number between 1 and " + str(num) + ": ")) 
+    except ValueError:
+        print("That's not a number. Please enter a number between 1 and "  + str(num) + ": " )
+        continue
+        
+            
         
     if guess > num:
         print ("Number is not withing range..")
         
-        
+    if guess <= 0:
+        print ("Number is below range")
+         
     if guess == secret:
         print ("correct")
         break
@@ -64,12 +71,15 @@ while num != secret:
     elif guess < secret:
         print("that number is too low")
         count += 1
+            
+    
+
     
 
         
         
 print ("it took you ", count, "tries")   
-print ("Game Over! See uou later")   
+print ("Game Over! See you later")   
 
 
         
